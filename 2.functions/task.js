@@ -1,3 +1,4 @@
+// Задание 1
 function getArrayParams(...arr) {
 
   // Максимальное значение
@@ -5,45 +6,39 @@ function getArrayParams(...arr) {
   // Минимальное значение
   let min = Math.min(...arr);
   // Среднее значение
-  BufferVariable = arr.reduce((acc, item) => acc + item);
-  avg = Number.parseFloat((BufferVariable / arr.length).toFixed(2));
+  bufferVariable = arr.reduce((acc, item) => acc + item);
+  avg = Number.parseFloat((bufferVariable / arr.length).toFixed(2));
   return { min: min, max: max, avg: avg };
 }
 
-// Сумма элементов
+// Сумма элементов - Задание 2.2
 function summElementsWorker(...arr) {
-  let result;
-  if (arr == undefined || arr == 0) {
-    result = 0;
+  let summElements;
+  if (arr.length == 0) {
+    summElements = 0;
   } else {
-    SummElements = arr.reduce((acc, item) => acc + item);
-    result = SummElements;
+    summElements = arr.reduce((acc, item) => acc + item);
   }
-  return result; 
+  return summElements; 
 }
 
-// Разница между максимальным и минимальным значениями
+// Разница между максимальным и минимальным значениями - задание 2.2
 function differenceMaxMinWorker(...arr) {
-  let result;
-  if (arr == undefined || arr == 0) {
-    result = 0;
-  } else {
-    let max = Math.max(...arr);
-    let min = Math.min(...arr);
-    result = max - min;
-  }    
-  return result;
+  let max = 0;
+  let min = 0;
+  if (arr.length > 0) {
+    max = Math.max(...arr);
+    min = Math.min(...arr);
+  }   
+  return max - min;
 }
 
-// Разница между суммами чётных и нечётных чисел
+// Разница между суммами чётных и нечётных чисел - задание 2.3
 function differenceEvenOddWorker(...arr) {
   let sumEvenElement = 0;
-  let sumOddElement = 0;
-  let result;
+  let sumOddElement = 0; 
   // Проверка не пуст ли массив
-  if (arr == undefined || arr == 0) {
-    result = 0;
-  } else {
+  if (arr.length > 0) {
     // Переборка элементов массива
     for (let i = 0; i < arr.length; i++) {
       if ((arr[i] % 2) == 0) {
@@ -52,19 +47,16 @@ function differenceEvenOddWorker(...arr) {
         sumOddElement = sumOddElement + arr[i];
       }
     }
-    result = sumEvenElement - sumOddElement;
   }    
-  return result;
+  return sumEvenElement - sumOddElement;
 }
 
+// Задание 2.4
 function averageEvenElementsWorker(...arr) {
   let sumEvenElement = 0;
   let countEvenElement = 0;
-  let result;
   // Проверка не пуст ли массив
-  if (arr == undefined || arr == 0) {
-    result = 0;
-  } else {
+  if (arr.length > 0) {
     // Переборка элементов массива
     for (let i = 0; i < arr.length; i++) {
       if ((arr[i] % 2) == 0) {
@@ -72,16 +64,16 @@ function averageEvenElementsWorker(...arr) {
         countEvenElement += 1;
       }
     }
-    result = sumEvenElement / (countEvenElement);
-  }    
-  return result;
+  } else {
+    return 0;
+  } 
+  return sumEvenElement / (countEvenElement);
 }
 
+// Задание 3
 function makeWork(arrOfArr, func) {
-  if (arrOfArr == undefined || arrOfArr == 0) {
-    func = 0;
-  } else {
-    func = 1;
-  }
-  return func;
+  let maxWorkerResult = Infinity; // следует удалить
+  const arrOfArrCopy = [...makeWork(arrOfArr)];
+  console.log (arrOfArrCopy);
+
 }
