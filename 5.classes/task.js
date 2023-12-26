@@ -15,15 +15,14 @@ class PrintEditionItem {
   }
 
   set state(value) {
+    if (value > 0 && value < 100) {
+      this._state = value;
+    }
     if (value < 0) {
       this._state = 0;
-      return;
     }
     if (value > 100) {
       this._state = 100;
-      return;
-    } else {
-      this._state = value;
     }
   }
 
@@ -66,5 +65,40 @@ class DetectiveBook extends Book {
   constructor(author, name, releaseDate, pagesCount) {
     super(author, name, releaseDate, pagesCount)
     this.type = "detective";
+  }
+}
+
+// Второе задание
+class Library {
+  constructor(name) {
+    this.name = name;
+    this.books = [];
+  }
+
+  addBook(book) {
+    if (book.state > 30) {
+      this.books.push(book);
+    }
+  }
+
+  findBookBy(type, value) {
+    const book1 = this.books.find((item) => {
+      return item(type) === value;
+    });
+    
+    if (book1 === undefined) {
+      return null;
+    }
+    return book1;
+  }
+
+  giveBookByName(bookName) {
+    const bookIndex = Library.books.findIndex((item) => {
+      Library.books.splice(item, 1);
+      return item.bookName === bookName;
+    });
+    if (bookIndex < 0 ) {
+      return null;
+    }
   }
 }
