@@ -8,20 +8,17 @@ class PrintEditionItem {
   }
 
   fix() {
-    this._state = this._state * 1.5;
-    if (this._state > 100) {
-      this._state = 100;
-    }
+    this.state = this.state * 1.5;
   }
 
   set state(value) {
     if (value > 0 && value < 100) {
       this._state = value;
     }
-    if (value < 0) {
+    if (value <= 0) {
       this._state = 0;
     }
-    if (value > 100) {
+    if (value >= 100) {
       this._state = 100;
     }
   }
@@ -76,29 +73,29 @@ class Library {
   }
 
   addBook(book) {
-    if (book.state > 30) {
+    if (book._state > 30) {
       this.books.push(book);
     }
   }
 
   findBookBy(type, value) {
-    const book1 = this.books.find((item) => {
-      return item(type) === value;
+    const book = this.books.find((item) => {
+      return item[type] === value;
     });
-    
-    if (book1 === undefined) {
+    if (book === undefined) {
       return null;
     }
-    return book1;
+    return book;
   }
 
   giveBookByName(bookName) {
-    const bookIndex = Library.books.findIndex((item) => {
-      Library.books.splice(item, 1);
-      return item.bookName === bookName;
-    });
-    if (bookIndex < 0 ) {
+    const a = this.books.indexOf(bookName);
+    if (a < 0) {
       return null;
     }
+
+    let result = this.books[a];
+    this.books.splice(a, 1);
+    return result;
   }
 }
