@@ -43,9 +43,9 @@ function differenceEvenOddWorker(...arr) {
   // Переборка элементов массива
   for (let i = 0; i < arr.length; i++) {
     if ((arr[i] % 2) == 0) {
-      sumEvenElement = sumEvenElement + arr[i];
+      sumEvenElement += arr[i];
     } else {
-      sumOddElement = sumOddElement + arr[i];
+      sumOddElement += arr[i];
     }
   } 
   return sumEvenElement - sumOddElement;
@@ -66,17 +66,17 @@ function averageEvenElementsWorker(...arr) {
       countEvenElement += 1;
     }
   }
-  return sumEvenElement / (countEvenElement);
+  return sumEvenElement / countEvenElement;
 }
 
 // Задание 3
 function makeWork(arrOfArr, func) {
-  let maxWorkerResult;
-  for (i = 0; i < arrOfArr.length; i++) {
-    const result = func (...arrOfArr);
+  let maxWorkerResult = func(...arrOfArr[0]);
+  for(let i = 0; i < arrOfArr.length; i++){
+    let result = func(...arrOfArr[i]);
     if (maxWorkerResult < result) {
       maxWorkerResult = result;
     }
   }
-return maxWorkerResult;
+  return maxWorkerResult;
 }
