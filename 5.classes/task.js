@@ -89,13 +89,14 @@ class Library {
   }
 
   giveBookByName(bookName) {
-    const a = this.books.indexOf(bookName);
-    if (a < 0) {
+    let result = this.books.find(function (element, index) {
+      if (element === bookName) {
+        this.books.splice(index, 1);
+        return element;
+      }   
+    });
+    if (result === undefined) {
       return null;
     }
-
-    let result = this.books[a];
-    this.books.splice(a, 1);
-    return result;
   }
 }
